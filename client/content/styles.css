@@ -1,32 +1,27 @@
-
 .header {
-	display: block;
-	width: 100%;
-	margin: auto;
-	text-align: center;
+  display: block;
+  width: 100%;
+  margin: auto;
+  text-align: center;
 }
-
 .input-box-container {
-	display: block;
-	width: 100%;
-	margin: auto;
-	text-align: center;
+  display: block;
+  width: 100%;
+  margin: auto;
+  text-align: center;
 }
-
 .input-box {
-	width: 50%;
-	height: 200px;
-	margin: auto;
-	background-color: lightblue;
-	border-radius: 7%;
-	padding: 15px;
+  width: 50%;
+  height: 200px;
+  margin: auto;
+  background-color: lightblue;
+  border-radius: 7%;
+  padding: 15px;
 }
-
-.input-box > input {
-	display: block;
-	margin: auto;
+.input-box input {
+  display: block;
+  margin: auto;
 }
-
-.input-box > button {
-	margin-top: 20px;
+.input-box button {
+  margin-top: 20px;
 }

@@ -20,6 +20,7 @@ var server = app.listen(8888, function () {
 
 require('./server/routes')(app); //routes, need to be after middleware
 
+
 //http://i227.photobucket.com/albums/dd254/hardaway33/byahgoflarge.gif
 
 //todo - 09/30
