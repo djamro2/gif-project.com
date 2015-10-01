@@ -35,8 +35,8 @@ module.exports.returnGif = function(req, res){
 		res.send(data);
 
 		fs.unlink(pathTemp, function(error){
-			console.log('Error deleting the temp gif retrieved ' + error);
-		}
+			if (error) console.log('Error deleting the temp gif retrieved ' + error);
+		});
 
 	});
 
