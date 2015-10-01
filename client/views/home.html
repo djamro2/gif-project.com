@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="GifProject">
+<head>
+
+	<title>Gif Project</title>
+	
+	<script type="text/javascript" src="/scripts/angular.min.js"></script>
+	<script type="text/javascript" src="/scripts/angular-route.min.js"></script>
+	<script type="text/javascript" src="/scripts/angular-resource.min.js"></script>
+
+	<script src="/controllers/HomeCtrl.js"></script>
+	<script src="/services/resources.js"></script>
+	<script src="/app.js"></script>
+
+</head>
+<body ng-controller="HomeController as vm">
+	<p>Input gif url to reverse</p>
+	<input ng-model="GifUrl"></input>
+	<button ng-click="vm.submitUrl(GifUrl)">Submit URL</button>
+</body>
+</html>
