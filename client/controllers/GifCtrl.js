@@ -4,19 +4,24 @@
 
 var controllers = controllers || angular.module('GifProject.controllers', []);
 
-controllers.controller('GifController', ['$scope', '$routeParams', '$location', '$locationProvider', 'ReverseService',
-	function($scope, $routeParams, $location, ReverseService){
+controllers.controller('GifController', ['$scope', '$routeParams', '$location', '$window', 'ReverseService',
+	function($scope, $routeParams, $location, $window, ReverseService){
 
 	var vm = this;
 	
 	vm.init = function(){
 
-		var paramValue = $routeParams.url;
-		console.log(paramValue);
-		//TODO get url
-		//ReverseService.get({url: url}, function(response){ //(?convert and) get the gif
-		//	vm.gifId = response.gifId;
-		//});
+		var currentUrl = $window.location.href;
+		var textToFind = 'path?url';
+		var cutoff = currentUrl.indexOf(textToFind);
+		var url = currentUrl.substring(cutoff + textToFind.length + 1, currentUrl.length);
+
+		$scope.GifUrl = decodeURIComponent(url);
+
+		ReverseService.get({url: url}, function(response){ //(?convert and) get the gif
+			console.log(response);
+			$scope.gifId = response.url;
+		});
 	};
 
 	vm.init();

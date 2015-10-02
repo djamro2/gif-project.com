@@ -3,7 +3,6 @@
 var gulp = require('gulp');
 var livereload = require('gulp-livereload');
 var nodemon = require('gulp-nodemon');
-var notify = require('gulp-notify');
 var prefix = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var watch = require('gulp-watch');
@@ -20,8 +19,7 @@ gulp.task('default', function() {
 	}).on('restart', function(){
 		// when the app has restarted, run livereload.
 		gulp.src('index.js')
-			.pipe(livereload())
-			.pipe(notify('Reloading page, please wait...'));
+			.pipe(livereload());
 	});
 	
 	gulp.watch('./client/content/styles.less', ['less']);

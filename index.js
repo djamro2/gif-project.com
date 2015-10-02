@@ -20,14 +20,10 @@ var server = app.listen(8888, function () {
 
 require('./server/routes')(app); //routes, need to be after middleware
 
-
-//http://i227.photobucket.com/albums/dd254/hardaway33/byahgoflarge.gif
-
-//todo - 09/30
+//todo - 10/02
 //
-//Try to finish the back end completely
-	//delete file after reversing
-	//prevent errors, error handling
-	//find bugs
-
-//tester.run(); //run the tests for this project
+//make directive to add image to page
+//update some css
+//add in a spinner when waiting for reversing
+//handle errors
+//try to get live reload to work

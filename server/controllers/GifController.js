@@ -44,7 +44,7 @@ module.exports.returnGif = function(req, res){
 
 module.exports.reverseGif = function(req, res){
 
-	var url = req.params.url;
+	var url = decodeURIComponent(req.params.url);
 
 	Gif.findOne({url_src: url}, function(err, result){
 

@@ -16,7 +16,7 @@ module.exports = function(app){
 
 	app.get('/gif/:gifId', GifController.returnGif);
 
-	app.get('/reverse/:url', function(req, res){
+	app.get('/reverse/*', function(req, res){
 		//just return the page to show the gif
 		res.sendFile(path.resolve(__dirname + '/../client/views/gif.html'));
 	}); 
