@@ -96,19 +96,3 @@ module.exports.reverseGif = function(req, res){
 	});
 
 };
-
-module.exports.reversePage = function(req, res){
-
-	var url = req.params.url; //url_stored
-
-	Gif.findOne({url_stored: url}, function(err, result){
-
-		if (result)
-			res.json({gifId: result.gifId});
-
-		if (error)
-			res.status(500).send({message: "Couldn't find that gif!"});
-
-	});
-
-};

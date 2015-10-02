@@ -4,8 +4,8 @@
 
 var controllers = controllers || angular.module('GifProject.controllers', []);
 
-controllers.controller('HomeController', ['$scope', 'ReverseService',
-	function($scope, ReverseService){
+controllers.controller('HomeController', ['$scope', '$window', 'ReverseService',
+	function($scope, $window, ReverseService){
 
 	var vm = this;
 	
@@ -13,10 +13,9 @@ controllers.controller('HomeController', ['$scope', 'ReverseService',
 		//nothing yet
 	};
 	
+	//goes to the correct url, which will either retreive the gif and/or convert it
 	vm.submitUrl = function(url){
-		ReverseService.get({url: url}, function(response){
-			console.log(response);
-		});
+		$window.location.href = 'reverse/path?url=' + encodeURIComponent(url);
 	};
 
 	vm.init();

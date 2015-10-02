@@ -12,11 +12,13 @@ module.exports = function(app){
 		res.sendFile(path.resolve(__dirname + '/../client/views/home.html'));
 	});
 
-	//reverse a gif and return the url where it is saved
-	app.get('/api/reverse/:url', GifController.reverseGif);
+	app.get('/api/reverse/:url', GifController.reverseGif); //reverse a gif and return the url where it is saved
 
 	app.get('/gif/:gifId', GifController.returnGif);
 
-	app.get('reverse/:url', GifController.reversePage);
+	app.get('/reverse/:url', function(req, res){
+		//just return the page to show the gif
+		res.sendFile(path.resolve(__dirname + '/../client/views/gif.html'));
+	}); 
 	
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="GifProject">
+<head>
+
+	<title>Gif Project</title>
+	
+	<link rel="stylesheet" type="text/css" href="/content/styles.css">
+
+	<script type="text/javascript" src="/scripts/angular.min.js"></script>
+	<script type="text/javascript" src="/scripts/angular-route.min.js"></script>
+	<script type="text/javascript" src="/scripts/angular-resource.min.js"></script>
+
+	<script src="/controllers/GifCtrl.js"></script>
+	<script src="/services/resources.js"></script>
+	<script src="/app.js"></script>
+
+</head>
+<body ng-controller="GifController as vm">
+
+	<div class="header">
+		<h1>Reverse a Gif</h1>
+	</div>
+
+	<div class="input-box-container">
+		<div class="input-box">
+			<p>Input gif url to reverse</p>
+			<input ng-model="GifUrl"></input>
+			<button ng-click="vm.submitUrl(GifUrl)">Submit URL</button>		
+		</div>
+	</div>
+
+	<div class="gif-container">
+		<img ng-if="!gifId" src="">
+		<!--<img ng-if="gifId" src="/gif/{{vm.gifId}}">-->
+	</div>
+
+</body>
+</html>
