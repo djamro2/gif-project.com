@@ -1,4 +1,15 @@
 
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: 'PT Sans', sans-serif;
+}
+
+.u {
+	text-decoration: underline;
+}
+
 .header {
 	display: block;
 	width: 100%;
@@ -6,29 +17,110 @@
 	text-align: center;
 }
 
+.footer {
+	width: 100%;
+	border-top: 2px solid #000;
+	position: absolute;
+	bottom: 0;
+	height: 50px;
+	text-align: center;
+}
+
 .input-box-container {
 	display: block;
 	width: 100%;
-	margin: auto;
+	margin: 40px auto;
 	text-align: center;
+}
+
+.container {
+	text-align: center;
+}
+
+.gif-container {
+	display: inline-block;
+	margin-left: 5px;
+	
+	.gif {
+		margin: auto;
+	}
+
+	&.loading {
+		border: 1px solid #999;
+		width: 50%;
+		padding:15px; //to match input-box
+	}
+
 }
 
 .input-box {
 	width: 50%;
-	height: 200px;
+	height: auto;
 	margin: auto;
 	background-color: lightblue;
-	border-radius: 7%;
 	padding: 15px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #888888;
 
 	input {
 		display: block;
 		margin: auto;
+		height: 20px;
+		width: 300px;
+		font-size: 1.2em;
 	}
 
 	button {
-		margin-top: 20px;
+		margin-top: 2.25rem;
+		margin-bottom: 15px;
+	    border: 0 none;
+	    border-radius: 36px;
+	    color: #fff;
+	    cursor: pointer;
+	    display: inline-block;
+	    font-size: 14px;
+	    padding: 12px 45px;
+	    text-transform: none;
+	    
+	    transition: all 100ms ease-in-out;
+  
+	    width: auto; /* auto */
+	    text-align: center; /* DELETE WHEN WIDTH AUTO */
+  
+	    background: blue;
+	    color: white;
+
+	  &:hover {
+	      opacity: .7;
+	  }
+	 
+	}
+
+	.input-box-text {
+		font-size: 1.3em;
+	}
+
+	.errorMessage {
+		color: orangered;
+		font-size: 1.2em;
 	}
 }
 
-//http://i.imgur.com/qtKUMy0.gif
+.navbar {
+	height: 3.5em;
+	width: 100%;
+	background-color: #eee;
+	border-bottom: 1px solid #999;
+	text-align: center;
+
+	a {
+		text-decoration: none;
+		color: black;
+	}
+
+	p {
+		margin: 0;
+		padding-top: 0.2em;
+		font-size: 2em;
+	}	
+}

@@ -14,6 +14,8 @@ module.exports = function(app){
 
 	app.get('/api/reverse/:url', GifController.reverseGif); //reverse a gif and return the url where it is saved
 
+	app.get('/api/check/:url', GifController.checkGif);
+
 	app.get('/gif/:gifId', GifController.returnGif);
 
 	app.get('/reverse/*', function(req, res){

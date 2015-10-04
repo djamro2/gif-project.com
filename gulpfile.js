@@ -18,8 +18,8 @@ gulp.task('default', function() {
 		ext: 'js'
 	}).on('restart', function(){
 		// when the app has restarted, run livereload.
-		gulp.src('index.js')
-			.pipe(livereload());
+		gulp.src('index.js');
+			//.pipe(livereload());
 	});
 	
 	gulp.watch('./client/content/styles.less', ['less']);

@@ -4,6 +4,7 @@
 
 	<title>Gif Project</title>
 	
+	<link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="/content/styles.css">
 
 	<script type="text/javascript" src="/scripts/angular.min.js"></script>
@@ -11,22 +12,30 @@
 	<script type="text/javascript" src="/scripts/angular-resource.min.js"></script>
 
 	<script src="/controllers/HomeCtrl.js"></script>
+	<script src="/directives/gifBox.js"></script>
 	<script src="/services/resources.js"></script>
 	<script src="/app.js"></script>
 
 </head>
 <body ng-controller="HomeController as vm">
 
-	<div class="header">
-		<h1>Reverse a Gif (home.html)</h1>
+	<div class="navbar">
+		<a href="/"><p>gif-project</p></a>
 	</div>
 
 	<div class="input-box-container">
 		<div class="input-box">
-			<p>Input gif url to reverse</p>
-			<input ng-model="GifUrl"></input>
-			<button ng-click="vm.submitUrl(GifUrl)">Submit URL</button>		
+			<form name="form" ng-submit="vm.submitUrl(GifUrl)">
+				<p class="input-box-text">Input gif url to reverse</p>
+				<input ng-model="GifUrl"></input>
+				<button type="submit">Submit URL</button>
+				<p ng-if="vm.errorMessage" class="errorMessage">{{vm.errorMessage}}</p>
+			</form>
 		</div>
+	</div>
+	
+	<div class="footer">
+		<p>Dan Jamrozik / gif-project@2015  djamrozik96@gmail.com</p>
 	</div>
 
 </body>

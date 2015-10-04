@@ -1,2 +1,2 @@
 
-var app = angular.module('GifProject', ['GifProject.controllers', 'GifProject.factories', 'ngRoute', 'ngResource']);
+var app = angular.module('GifProject', ['GifProject.controllers', 'GifProject.factories', 'GifProject.directives', 'ngRoute', 'ngResource']);
