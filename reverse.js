@@ -4,14 +4,14 @@
 var fs          = require('fs');
 var exec        = require('child_process').exec;
 var rimraf      = require('rimraf');
-var GifEncoder  = require('gif-encoder');
-var sizeOf      = require('image-size');
+//var GifEncoder  = require('gif-encoder');
+//var sizeOf      = require('image-size');
 
-var Canvas      = require('canvas');
-var Image = Canvas.Image;
+//var Canvas      = require('canvas');
+//var Image = Canvas.Image;
   
 
-var child;
+var childPython, childImageMagick;
 
 module.exports.reverseGif = function(gifName, callback) {
 
@@ -43,45 +43,56 @@ module.exports.reverseGif = function(gifName, callback) {
   
     console.log('Splitting gif into frames...');
     
-    child = exec(command, function (error, stdout, stderr) {
+    childPython = exec(command, function (error, stdout, stderr) {
     	
-      if (stdout) console.log(stdout);
-    	if (stderr) console.log(stderr);
-      if (error !== null) {
-        console.log('exec error: ' + error);
-      }
+        if (stdout) console.log(stdout);
+        if (stderr) console.log(stderr);
+        if (error !== null) console.log('exec error: ' + error);
       
-      console.log('Gif split. Encoding new gif now...');
+        console.log('Gif split. Encoding new gif now...');
 
-      //now we have all the images, put them together with gif-encoder
-      var files = fs.readdirSync(dir);
-      var dimensions = sizeOf('output/0.png');
+        //todo: quicker way to encode new gif with javascript, for now use imagemagick
 
-      var gif = new GifEncoder(dimensions.width, dimensions.height);
+        /*var files = fs.readdirSync(dir);
+        var dimensions = sizeOf('output/0.png');
 
-      var file = fs.createWriteStream('localgif-reverse.gif');
-      gif.pipe(file);
-      gif.writeHeader();
+        var gif = new GifEncoder(dimensions.width, dimensions.height);
 
-      var canvas = new Canvas(dimensions.width, dimensions.height);
-      var ctx = canvas.getContext('2d');
+        var file = fs.createWriteStream('localgif-reverse.gif');
+        gif.pipe(file);
+        gif.writeHeader();
 
-      for (var i = 0; i < files.length; i++){
+        var canvas = new Canvas(dimensions.width, dimensions.height);
+        var ctx = canvas.getContext('2d');
 
-        fs.readFile('output/' + (i) + '.png', function(err, squid){
-          if (err) throw err;
-          img = new Image;
-          img.src = squid;
-          ctx.drawImage(img, 0, 0, img.width, img.height);
-          var pixels = ctx.getImageData(0, 0, dimensions.width, dimensions.height);
-          gif.addFrame(pixels);
+        var addPixels = function(err, result){
+            if (err) throw err;
+            var img = new Image();
+            img.src = result;
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+            var pixels = ctx.getImageData(0, 0, dimensions.width, dimensions.height);
+            gif.addFrame(pixels);
+        };
+
+        //go down the frame numbers to get a reversed result
+        for (var i = (files.length - 1); i >= 0; i--){
+          fs.readFile('output/' + i + '.png', addPixels); //pass data into addPixels
+        }*/
+
+        var commandIM = "convert $(ls -v output/*.png) -delay 10 -loop 0 localgif-reverse.gif";
+
+        childImageMagick = exec(commandIM, function(error, stdout, stderr) {
+
+          if (stdout) console.log(stdout);
+          if (stderr) console.log(stderr);
+          if (error !== null) console.log('exec error: ' + error);
+
+          global.isRunningReverse = false; //finished, let another process run
+
+          callback();
+
         });
-        
-      }
 
-      global.isRunningReverse = false;
-
-      callback();
     });
 
   } 

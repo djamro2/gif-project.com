@@ -1,0 +1,16 @@
+
+//
+//Short-term notes to keep track of what I'm doing
+//
+
+Current Tasks
+-------------
+
+Splitting the gif seems to be taking longer than normal
+	find ways to reduce the time
+
+
+Current Changes
+-------------
+
+

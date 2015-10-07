@@ -186,7 +186,8 @@ var _reverse = function(url, callback){
 					fs.unlink(fileGif, function(error){ //delete local gif file 
 
 						if (error) console.log(error);
-						else console.log('gif saved successfully');
+						else 
+						console.log('gif saved successfully');
 						console.log('-------------');
 
 						writestream = null;
@@ -206,4 +207,4 @@ var _reverse = function(url, callback){
 
 	});
 
-}
+};
