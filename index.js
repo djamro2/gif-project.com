@@ -3,7 +3,7 @@ var express  = require('express');
 var mongoose = require('mongoose');
 var fs       = require('fs');
 
-var local_codes = require('./local_codes');
+//var local_codes = require('./local_codes');
 var app         = express();
 
 global.isProduction = false;
