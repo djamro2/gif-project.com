@@ -148,9 +148,9 @@ var _reverse = function(url, callback){
 
 	var isError = false;
 		
-	reverse.reverseGif(url, function(){ //new reversed gif now at localgif-reverse
+	reverse.reverseGif(url, function(data){ //(maybe)data is a buffer of the reverse img
 
-		var fileGif = 'localgif-reverse.gif';
+		var fileGif = 'localgif-reverse.gif'; //name of reversed gif stored locally
 
 		var gif = new Gif({});
 		gif.url_src = url;

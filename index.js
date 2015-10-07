@@ -15,7 +15,7 @@ if (global.isProduction) {
 	var server = app.listen(local_codes.port, local_codes.internal_ip, function(){
 		var host = server.address().address;
 		var port = server.address().port;
-		console.log('SampleCode listening at http://%s:%s', host, port);
+		console.log('gif-project listening at http://%s:%s', host, port);
 	});
 
 } else {
