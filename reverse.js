@@ -5,6 +5,8 @@ var fs          = require('fs');
 var exec        = require('child_process').exec;
 var rimraf      = require('rimraf');
 var http        = require('http');
+var gifyParse   = require('gify-parse');
+var moment      = require('moment');
 //var GifEncoder  = require('gif-encoder');
 //var sizeOf      = require('image-size');
 
@@ -39,6 +41,8 @@ module.exports.reverseGif = function(gifName, callback) {
   
   if (!global.isRunningReverse) {
 
+    console.log('Downloading gif to local file... ' + moment(new Date()).format('hh:mm:ssa'));
+
     var file = fs.createWriteStream("localgif-reverse.gif");
     var request = http.get(gifName, function(response) {
       response.pipe(file);
@@ -48,29 +52,41 @@ module.exports.reverseGif = function(gifName, callback) {
 
       global.isRunningReverse = true;
     
-      console.log('Splitting gif into frames...');
+      console.log('Splitting gif into frames... ' + moment(new Date()).format('hh:mm:ssa'));
       
       childPython = exec(command, function (error, stdout, stderr) {
       	
           if (stdout) console.log(stdout);
           if (stderr) console.log(stderr);
           if (error !== null) console.log('exec error: ' + error);
+
+          var buffer = fs.readFileSync('localgif-reverse.gif');
+          var gifInfo = gifyParse.getInfo(buffer);
+
+          var delay = gifInfo.images[0].delay / 10; //in IM, 1s is 100 for some reason
         
-          console.log('Gif split. Encoding new gif now...');
+          console.log('Encoding new gif now (delay: ' + delay + ')... ' + moment(new Date()).format('hh:mm:ssa'));
 
-          var commandIM = "convert -limit memory 64 -limit map 128 $(ls -v output/*.png) -delay 10 -loop 0 localgif-reverse.gif";
+          var commandIM = "convert -limit memory 64 -limit map 128 -delay " + delay + " $(ls -v output/*.png) -loop 0 localgif-reverse.gif";
 
-          childImageMagick = exec(commandIM, function(error, stdout, stderr) {
+          if (!global.isRunningEncoding){
 
-            if (stdout) console.log(stdout);
-            if (stderr) console.log(stderr);
-            if (error !== null) console.log('exec error: ' + error);
+            global.isRunningEncoding = true;
 
-            global.isRunningReverse = false; //finished, let another process run
+            childImageMagick = exec(commandIM, function(error, stdout, stderr) {
 
-            callback();
+              if (stdout) console.log(stdout);
+              if (stderr) console.log(stderr);
+              if (error !== null) console.log('exec error: ' + error);
 
-          });
+              global.isRunningReverse = false; //finished, let another process run
+              global.isRunningEncoding = false;
+
+              callback();
+
+            });
+
+          }
 
       });
 

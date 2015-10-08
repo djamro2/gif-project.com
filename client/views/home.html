@@ -30,23 +30,27 @@
 </head>
 <body ng-controller="HomeController as vm">
 
-	<div class="navbar">
-		<a href="/"><p>gif-project</p></a>
-	</div>
+	<div id="wrapper">
 
-	<div class="input-box-container">
-		<div class="input-box">
-			<form name="form" ng-submit="vm.submitUrl(GifUrl)">
-				<p class="input-box-text">Input gif url to reverse</p>
-				<input ng-model="GifUrl"></input>
-				<button type="submit">Submit URL</button>
-				<p ng-if="vm.errorMessage" class="errorMessage">{{vm.errorMessage}}</p>
-			</form>
+		<div class="navbar">
+			<a href="/"><p>gif-project</p></a>
 		</div>
-	</div>
 
-	<div class="footer">
-		<p>Dan Jamrozik / gif-project@2015  djamrozik96@gmail.com</p>
+		<div class="input-box-container">
+			<div class="input-box">
+				<form name="form" ng-submit="vm.submitUrl(GifUrl)">
+					<p class="input-box-text">Input gif url to reverse</p>
+					<input ng-model="GifUrl"></input>
+					<button type="submit">Submit URL</button>
+					<p ng-if="vm.errorMessage" class="errorMessage">{{vm.errorMessage}}</p>
+				</form>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>Dan Jamrozik / gif-project@2015  djamrozik96@gmail.com</p>
+		</div>
+
 	</div>
 
 </body>

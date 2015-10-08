@@ -3,11 +3,17 @@ html, body {
 	margin: 0;
 	padding: 0;
 	border: 0;
+	height: 100%;
 	font-family: 'PT Sans', sans-serif;
 }
 
 .u {
 	text-decoration: underline;
+}
+
+#wrapper {
+	min-height: 100%;
+	position: relative;
 }
 
 .header {
@@ -18,11 +24,12 @@ html, body {
 }
 
 .footer {
-	width: 100%;
-	border-top: 2px solid #000;
 	position: absolute;
+	width: 100%;
+	height: 40px;
+	border-top: 2px solid #000;
 	bottom: 0;
-	height: 50px;
+	left: 0;
 	text-align: center;
 }
 
@@ -35,6 +42,7 @@ html, body {
 
 .container {
 	text-align: center;
+	padding-bottom: 70px; //height of footer + extra padding
 }
 
 .gif-container {
