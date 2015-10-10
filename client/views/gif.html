@@ -24,7 +24,6 @@
 
 	  ga('create', 'UA-68428821-1', 'auto');
 	  ga('send', 'pageview');
-
 	</script>
 
 </head>
@@ -38,20 +37,34 @@
 
 		<div class="input-box-container">
 			<div class="input-box">
-			<form name="form" ng-submit="vm.submitUrl(GifUrl)">
-				<p class="input-box-text">Input gif url to reverse</p>
-				<input ng-model="GifUrl"></input>
-				<button type="submit">Submit URL</button>
-				<p ng-if="vm.errorMessage" class="errorMessage">{{vm.errorMessage}}</p>		
+				<form name="form" ng-submit="vm.submitUrl(GifUrl)">
+					<p class="input-box-text">Input gif url to reverse</p>
+					<input ng-model="GifUrl"></input>
+					<button type="submit">Submit URL</button>
+					<p ng-if="vm.errorMessage" class="errorMessage">{{vm.errorMessage}}</p>
+				</form>
 			</div>
 		</div>
 
 		<div class="container" gif-box>
 
+			<div class="ad-container">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- samplecode.io footer ad -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-2264916173854946"
+				     data-ad-slot="1995109319"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+
 		</div>
 
 		<div class="footer">
-			<p>Dan Jamrozik / gif-project@2015  djamrozik96@gmail.com</p>
+			<p class="disclaimer">You agree that the gif you submit does not violate any copyright rules</p>
+			<p class="attribute">Dan Jamrozik / gif-project@2015  djamrozik96@gmail.com</p>
 		</div>
 
 	</div>

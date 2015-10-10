@@ -7,6 +7,8 @@ factories.factory('ReverseService', function($resource){
 		update: {method: 'PUT'},
 		checkIfExists: {method: 'GET', 
 						url: '/api/check/:url', 
-						params: {url: '@url'}, isArray: false}
+						params: {url: '@url'}, isArray: false},
+		get: {method: 'GET', url: '/api/reverse/:url', isArray: false, timeout: 240000}
+
 	});
 });

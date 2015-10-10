@@ -23,14 +23,32 @@ html, body {
 	text-align: center;
 }
 
+.ad-container {
+	text-align: center;
+}
+
 .footer {
 	position: absolute;
 	width: 100%;
-	height: 40px;
+	height: 50px;
 	border-top: 2px solid #000;
 	bottom: 0;
 	left: 0;
 	text-align: center;
+
+	@media screen and (min-width: 950px) {
+	
+		.disclaimer {
+		  	float: left;
+		  	padding-left: 15px;
+		}
+
+		.attribute {
+			float: right;
+			padding-right: 15px;
+		}
+
+	}
 }
 
 .input-box-container {
@@ -40,9 +58,14 @@ html, body {
 	text-align: center;
 }
 
+.ad-container {
+	padding: 15px 0;
+}
+
 .container {
 	text-align: center;
-	padding-bottom: 70px; //height of footer + extra padding
+	margin-top: 35px;
+	padding-bottom: 80px; //height of footer + extra padding
 }
 
 .gif-container {
@@ -65,7 +88,7 @@ html, body {
 	width: 50%;
 	height: auto;
 	margin: auto;
-	background-color: lightblue;
+	background-color: #297ACC;
 	padding: 15px;
 	border-radius: 10px;
 	box-shadow: 5px 5px 5px #888888;
@@ -117,7 +140,7 @@ html, body {
 .navbar {
 	height: 3.5em;
 	width: 100%;
-	background-color: #eee;
+	background-color: #333;
 	border-bottom: 1px solid #999;
 	text-align: center;
 
@@ -130,5 +153,6 @@ html, body {
 		margin: 0;
 		padding-top: 0.2em;
 		font-size: 2em;
+		color: white;
 	}	
 }

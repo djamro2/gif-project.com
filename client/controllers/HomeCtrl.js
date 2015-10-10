@@ -14,9 +14,17 @@ controllers.controller('HomeController', ['$scope', '$window', 'ReverseService',
 		//nothing yet
 	};
 	
+	//return true if the url seems to alright, false otherwise
+	vm.checkURL = function(url){
+
+		return true;
+
+	};
+
 	//goes to the correct url, which will either retreive the gif and/or convert it
 	vm.submitUrl = function(url){
-		if (!url) {
+		var valid = vm.checkURL(url);
+		if (!url || !valid) {
 			vm.errorMessage = 'url cannot be ' + (url? url : 'nothing');
 			return;
 		} else {
