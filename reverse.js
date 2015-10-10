@@ -41,6 +41,8 @@ module.exports.reverseGif = function(gifName, callback) {
   
   if (!global.isRunningReverse) {
 
+    global.isRunningReverse = true;
+
     console.log('Downloading gif to local file... ' + moment(new Date()).format('hh:mm:ssa'));
 
     var file = fs.createWriteStream("localgif-reverse.gif");
@@ -49,8 +51,6 @@ module.exports.reverseGif = function(gifName, callback) {
     });
 
     file.on('finish', function(){
-
-      global.isRunningReverse = true;
     
       console.log('Splitting gif into frames... ' + moment(new Date()).format('hh:mm:ssa'));
       
