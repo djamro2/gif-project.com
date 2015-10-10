@@ -27,7 +27,7 @@ module.exports.reverseGif = function(gifName, callback) {
 
   //end up with an empty folder called 'output'
   var dir = 'output';
-  fs.stat(dir, function(error, stat){
+  fs.statSync(dir, function(error, stat){
     if (error) { //'/output' doesn't exist
       fs.mkdirSync(dir);
     } else { // '/output' does exist

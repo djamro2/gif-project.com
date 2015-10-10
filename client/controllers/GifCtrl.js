@@ -19,15 +19,23 @@ controllers.controller('GifController', ['$scope', '$routeParams', '$location', 
 		var cutoff = currentUrl.indexOf(textToFind);
 		var url = currentUrl.substring(cutoff + textToFind.length + 1, currentUrl.length);
 
+		//transform the url here to meet requirements
 		if (url.indexOf('.gifv') > -1 && url.indexOf('imgur') > -1){ //gifv to gif
 			url = url.substring(0, url.length - 1);
 		}
 
-		$scope.GifUrl = decodeURIComponent(url);
+		if (url.indexOf('https') > -1) {
+			url = url.replace('https', 'http');
+		}
+
+		url = decodeURIComponent(url);
+
+		$scope.GifUrl = url;
 
 		$timeout(function(){
 
-			$scope.gifContainerObject.setSpinner(function(){ //get spinner first
+			$scope.gifContainerObject.setSpinner(function(){ //set spinner first
+				
 				ReverseService.get({url: url}, function(response){
 					if (response) {
 						$scope.gifContainerObject.setGif(response.url);
@@ -40,6 +48,7 @@ controllers.controller('GifController', ['$scope', '$routeParams', '$location', 
 					$scope.gifContainerObject.clear();
 					vm.errorMessage = 'Sorry! There was a problem reversing this gif!';					
 				});
+			
 			});
 
 		});
